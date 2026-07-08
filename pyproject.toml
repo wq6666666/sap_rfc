@@ -6,12 +6,16 @@ dependencies = [
     "fastapi>=0.139.0",
     "pydantic>=2.13.4",
     "pydantic-settings>=2.14.2",
-    "pyrfc",
     "uvicorn==0.50.2",
+]
+
+[project.optional-dependencies]
+sap = [
+    "pyrfc",
 ]
 
 [tool.fastapi]
 entrypoint = "app.main:app"
 
 [tool.uv.sources]
-pyrfc = { git = "https://github.com/SAP/PyRFC.git" }
+pyrfc = { git = "https://github.com/SAP/PyRFC.git", rev = "5d4a20a5aee37accf32fc44ed8d668bd69332169" }

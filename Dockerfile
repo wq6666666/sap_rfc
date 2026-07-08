@@ -26,7 +26,13 @@ RUN test -f "$SAPNWRFC_HOME/lib/libsapnwrfc.so" &&  \
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-dev --no-install-project
+    uv sync --frozen --no-dev --no-install-project --no-group sap \
+
+RUN git clone https://github.com/SAP/PyRFC.git /tmp/pyrfc-src && \
+    cd /tmp/pyrfc-src && \
+    git checkout 5d4a20a5aee37accf32fc44ed8d668bd69332169 && \
+    sed -i 's/-minline-all-stringops//g' setup.py && \
+    uv pip install /tmp/pyrfc-src --no-deps
 
 COPY ./app /app/app
 
