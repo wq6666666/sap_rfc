@@ -1,0 +1,19 @@
+{
+  "rfc_name": "ZPM_FM_RFC_APU_04",
+  "import_params": {
+  },
+  "changing_params": {
+  },
+  "table_params": {
+    "IT_TYPE": [
+      {
+        "ZPARTT": "ENG"
+      }
+    ],
+    "IT_HPN": [
+      {
+        "MATNR": "TRENT700"
+      }
+    ]
+  }
+}

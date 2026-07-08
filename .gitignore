@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+
+# 运行时缓存（重要）
+cache/
+*.log
+*.pid
+
+# 环境变量
+.env
+.env.local
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+Query.sql
+
+test_redis_cache.py

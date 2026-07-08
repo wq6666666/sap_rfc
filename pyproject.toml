@@ -1,0 +1,21 @@
+[project]
+name = "sap-rfc"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "fastapi>=0.139.0",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.2",
+    "uvicorn==0.50.2",
+]
+
+[project.optional-dependencies]
+sap = [
+    "pyrfc",
+]
+
+[tool.fastapi]
+entrypoint = "app.main:app"
+
+[tool.uv.sources]
+pyrfc = { url = "https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp311-cp311-macosx_14_0_arm64.whl" }
