@@ -12,8 +12,10 @@ WORKDIR /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-ADD nwrfc750P_18-80009783.zip /usr/local/sap/
+ADD nwrfc750P_18-80009783.tar.gz /usr/local/sap/
+
 ENV SAPNWRFC_HOME="/usr/local/sap/nwrfc750P_18-80009783/nwrfcsdk"
+
 ENV LD_LIBRARY_PATH=$SAPNWRFC_HOME/lib:$LD_LIBRARY_PATH
 
 RUN test -f "$SAPNWRFC_HOME/lib/libsapnwrfc.so" &&  \
@@ -24,9 +26,9 @@ RUN test -f "$SAPNWRFC_HOME/lib/libsapnwrfc.so" &&  \
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-dev --no-install-project --no-group sap
+    uv sync --frozen --no-dev --no-install-project --no-extra sap
 
-RUN UV_NO_SOURCES=1 uv pip install --no-binary pyrfc pyrfc
+RUN UV_NO_SOURCES=1 uv pip install --no-binary pyrfc pyrfc==3.3
 
 COPY ./app /app/app
 
