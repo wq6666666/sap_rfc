@@ -12,8 +12,8 @@ WORKDIR /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-ADD nwrfcsdk.zip /usr/local/sap/
-ENV SAPNWRFC_HOME="/usr/local/sap/nwrfcsdk"
+ADD nwrfc750P_18-80009783.zip /usr/local/sap/
+ENV SAPNWRFC_HOME="/usr/local/sap/nwrfc750P_18-80009783/nwrfcsdk"
 ENV LD_LIBRARY_PATH=$SAPNWRFC_HOME/lib:$LD_LIBRARY_PATH
 
 RUN test -f "$SAPNWRFC_HOME/lib/libsapnwrfc.so" &&  \
@@ -28,7 +28,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 RUN UV_NO_SOURCES=1 uv pip install --no-binary pyrfc pyrfc
 
-COPY . .
+COPY ./app /app/app
 
 EXPOSE 8083
 
