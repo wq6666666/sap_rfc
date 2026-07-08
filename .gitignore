@@ -29,5 +29,5 @@ venv/
 env/
 
 Query.sql
-
+.tar.gz
 test_redis_cache.py
