@@ -5,7 +5,7 @@ services:
     ports:
       - "8083:8080"
     volumes:
-      - ./app:app/app
+      - ./app:/app/app
     networks:
       - rfc_network
     env_file:

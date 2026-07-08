@@ -16,7 +16,7 @@ ADD nwrfc750P_18-80009783.tar.gz /usr/local/sap/
 
 ENV SAPNWRFC_HOME="/usr/local/sap/nwrfc750P_18-80009783/nwrfcsdk"
 
-ENV LD_LIBRARY_PATH=$SAPNWRFC_HOME/lib:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH="$SAPNWRFC_HOME/lib"
 
 RUN test -f "$SAPNWRFC_HOME/lib/libsapnwrfc.so" &&  \
             echo "✅ SAP SDK found" || (echo "❌ SDK not found" && exit 1)
@@ -31,8 +31,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 RUN git clone https://github.com/SAP/PyRFC.git /tmp/pyrfc-src && \
     cd /tmp/pyrfc-src && \
     git checkout 5d4a20a5aee37accf32fc44ed8d668bd69332169 && \
-    sed -i 's/-minline-all-stringops//g' setup.py && \
-    sed -i 's/""//g' setup.py && \
+    sed -i '/-minline-all-stringops/d' setup.py && \
     uv pip install /tmp/pyrfc-src --no-deps
 
 COPY ./app /app/app
