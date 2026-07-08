@@ -32,6 +32,7 @@ RUN git clone https://github.com/SAP/PyRFC.git /tmp/pyrfc-src && \
     cd /tmp/pyrfc-src && \
     git checkout 5d4a20a5aee37accf32fc44ed8d668bd69332169 && \
     sed -i 's/-minline-all-stringops//g' setup.py && \
+    sed -i 's/""//g' setup.py && \
     uv pip install /tmp/pyrfc-src --no-deps
 
 COPY ./app /app/app
