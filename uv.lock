@@ -157,11 +157,8 @@ wheels = [
 
 [[package]]
 name = "pyrfc"
-version = "3.3.1"
-source = { url = "https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp311-cp311-macosx_14_0_arm64.whl" }
-wheels = [
-    { url = "https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:bee43ec984f3757dba355d540ea3011c82e06a324b4c382503e4856248496cb8" },
-]
+version = "3.4"
+source = { git = "https://github.com/SAP/PyRFC.git#5d4a20a5aee37accf32fc44ed8d668bd69332169" }
 
 [[package]]
 name = "python-dotenv"
@@ -180,12 +177,8 @@ dependencies = [
     { name = "fastapi" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
-    { name = "uvicorn" },
-]
-
-[package.optional-dependencies]
-sap = [
     { name = "pyrfc" },
+    { name = "uvicorn" },
 ]
 
 [package.metadata]
@@ -193,10 +186,9 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.139.0" },
     { name = "pydantic", specifier = ">=2.13.4" },
     { name = "pydantic-settings", specifier = ">=2.14.2" },
-    { name = "pyrfc", marker = "extra == 'sap'", url = "https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp311-cp311-macosx_14_0_arm64.whl" },
+    { name = "pyrfc", git = "https://github.com/SAP/PyRFC.git" },
     { name = "uvicorn", specifier = "==0.50.2" },
 ]
-provides-extras = ["sap"]
 
 [[package]]
 name = "starlette"

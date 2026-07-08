@@ -26,9 +26,7 @@ RUN test -f "$SAPNWRFC_HOME/lib/libsapnwrfc.so" &&  \
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-dev --no-install-project --no-extra sap
-
-RUN UV_NO_SOURCES=1 uv pip install --no-binary pyrfc pyrfc==3.3
+    uv sync --frozen --no-dev --no-install-project
 
 COPY ./app /app/app
 
